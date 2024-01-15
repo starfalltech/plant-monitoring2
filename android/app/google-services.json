@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "455611943887",
+    "project_id": "plant-monitor-test",
+    "storage_bucket": "plant-monitor-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455611943887:android:5d4998d0253575cf9c20ba",
+        "android_client_info": {
+          "package_name": "com.example.plant_client"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT22XrcKPHclICFpKy_dS4dPhYfpb-NQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455611943887:android:be6d114f4ba4bf8e9c20ba",
+        "android_client_info": {
+          "package_name": "com.example.plant_master"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT22XrcKPHclICFpKy_dS4dPhYfpb-NQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
