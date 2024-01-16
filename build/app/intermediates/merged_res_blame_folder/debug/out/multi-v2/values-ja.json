@@ -4,7 +4,7 @@
             "outputFile": "com.example.plant_client.app-mergeDebugResources-12:/values-ja/values-ja.xml",
             "map": [
                 {
-                    "source": "/home/retr0/.gradle/caches/transforms-3/cfb1b99aff7ad9cf4c1b8532c6075063/transformed/core-1.6.0/res/values-ja/values-ja.xml",
+                    "source": "/home/retr0/.gradle/caches/transforms-3/6f60de22802bf9a561b777eeb3cd5cb7/transformed/core-1.6.0/res/values-ja/values-ja.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/home/retr0/.gradle/caches/transforms-3/98537e5ec70bbb9b95a3c4905239e936/transformed/jetified-play-services-basement-18.1.0/res/values-ja/values.xml",
+                    "source": "/home/retr0/.gradle/caches/transforms-3/4369bf1132c29aa9d354dab1b1bbc3be/transformed/jetified-play-services-basement-18.1.0/res/values-ja/values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "/home/retr0/.gradle/caches/transforms-3/f46872f19fc48f4d97e8ffc9ee9d6807/transformed/jetified-play-services-base-18.0.1/res/values-ja/values.xml",
+                    "source": "/home/retr0/.gradle/caches/transforms-3/015b170a6db1397e1872519ec11cf523/transformed/jetified-play-services-base-18.0.1/res/values-ja/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",

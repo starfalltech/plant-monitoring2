@@ -20,7 +20,9 @@
         <option name="modules">
           <set>
             <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/cloud_firestore-4.14.0/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/connectivity_plus-5.0.2/android" />
             <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_core-2.24.2/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_android-2.2.2/android" />
             <option value="$USER_HOME$/Documents/flutter_linux_3.13.6-stable/flutter/packages/flutter_tools/gradle" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />

@@ -1,11 +1,8 @@
-import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plant_client/core/helpers/constant_values.dart';
-import 'package:plant_client/presentation/pages/pages.dart';
-import 'package:plant_client/presentation/pages/water_chart_tab_page.dart';
+import 'package:plant_client/presentation/widgets/widget.dart';
 
-@RoutePage()
 class HomePage extends StatefulWidget {
   const HomePage({
     super.key,
@@ -55,20 +52,20 @@ class _HomePageState extends State<HomePage> {
                         Text(
                           "Steve wizard",
                           style: GoogleFonts.poppins(
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                         Text(
-                          "Farmer",
+                          "Farmer Semarang",
                           style: GoogleFonts.poppins(
-                              fontSize: 14, color: const Color(0xff6B6B6B)),
+                              fontSize: 12, color: const Color(0xff6B6B6B)),
                         )
                       ],
                     ),
                     const Spacer(),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
                       decoration: BoxDecoration(
                         color: const Color(0xff44F1A6),
                         borderRadius: BorderRadius.circular(50),
@@ -83,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                       child: Text(
                         "Other\nGarden",
                         style: GoogleFonts.poppins(
-                          fontSize: 16,
+                          fontSize: 14,
                         ),
                       ),
                     )
@@ -96,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                 child: Text(
                   "Alocasia macrorrhiza",
                   style: GoogleFonts.poppins(
-                    fontSize: 26,
+                    fontSize: 24,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -107,7 +104,7 @@ class _HomePageState extends State<HomePage> {
                 child: Text(
                   "Herb",
                   style: GoogleFonts.poppins(
-                    fontSize: 16,
+                    fontSize: 14,
                     color: const Color(0xff7D86A8),
                   ),
                 ),
@@ -125,7 +122,13 @@ class _HomePageState extends State<HomePage> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            "Hybrid",
+                            value == 0
+                                ? "Inform"
+                                : value == 1
+                                    ? "Condition"
+                                    : value == 2
+                                        ? "Temp"
+                                        : "water",
                             style: GoogleFonts.poppins(
                               fontSize: 16,
                             ),
