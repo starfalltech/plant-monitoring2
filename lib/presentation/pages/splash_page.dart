@@ -1,12 +1,10 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:plant_client/presentation/pages/home_page.dart';
 
-import '../../config/routers/app_router.dart';
 import '../manager/auth/auth_bloc.dart';
 
-@RoutePage()
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
 
@@ -23,7 +21,8 @@ class _SplashPageState extends State<SplashPage> {
         child: BlocListener<AuthBloc, AuthState>(
           listener: (context, state) {
             if (state.status == AuthStatus.success) {
-              context.router.replace(const HomeRoute());
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (_) => const HomePage()));
             }
           },
           child: SizedBox(

@@ -1,0 +1,21 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'chart_data_entity.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$ChartDataEntityImpl _$$ChartDataEntityImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ChartDataEntityImpl(
+      date: DateTime.parse(json['date'] as String),
+      value: json['value'] as int,
+    );
+
+Map<String, dynamic> _$$ChartDataEntityImplToJson(
+        _$ChartDataEntityImpl instance) =>
+    <String, dynamic>{
+      'date': instance.date.toIso8601String(),
+      'value': instance.value,
+    };
