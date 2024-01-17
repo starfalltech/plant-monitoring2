@@ -1,11 +1,23 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plant_client/core/helpers/constant_values.dart';
+import 'package:plant_client/domain/entities/chart_data_entity.dart';
 
-class InformationTabPage extends StatelessWidget {
+class InformationTabPage extends StatefulWidget {
   const InformationTabPage({
     super.key,
   });
+
+  @override
+  State<InformationTabPage> createState() => _InformationTabPageState();
+}
+
+class _InformationTabPageState extends State<InformationTabPage> {
+  final Stream<QuerySnapshot> tempStream =
+      FirebaseFirestore.instance.collection('temp').snapshots();
+  final Stream<QuerySnapshot> waterStream =
+      FirebaseFirestore.instance.collection('water').snapshots();
 
   @override
   Widget build(BuildContext context) {
@@ -46,11 +58,31 @@ class InformationTabPage extends StatelessWidget {
                       color: const Color(0xff7D86A8),
                     ),
                   ),
-                  Text(
-                    "22 C",
-                    style: GoogleFonts.montserrat(
-                        fontSize: 22, fontWeight: FontWeight.w700),
-                  ),
+                  StreamBuilder<QuerySnapshot>(
+                      stream: tempStream,
+                      builder: (BuildContext context,
+                          AsyncSnapshot<QuerySnapshot> snapshot) {
+                        if (snapshot.hasError) {
+                          return Text('Error');
+                        }
+
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Text("");
+                        }
+                        final listData = snapshot.data?.docs
+                            .map(
+                              (e) => ChartDataEntity.fromJson(
+                                  e.data() as Map<String, dynamic>),
+                            )
+                            .toList();
+                        listData?.sort((a, b) => a.date.compareTo(b.date));
+                        return Text(
+                          "${listData?.last.value} C",
+                          style: GoogleFonts.montserrat(
+                              fontSize: 22, fontWeight: FontWeight.w700),
+                        );
+                      }),
                 ],
               ),
               Column(
@@ -63,11 +95,31 @@ class InformationTabPage extends StatelessWidget {
                       color: const Color(0xff7D86A8),
                     ),
                   ),
-                  Text(
-                    "18 %",
-                    style: GoogleFonts.montserrat(
-                        fontSize: 22, fontWeight: FontWeight.w700),
-                  ),
+                  StreamBuilder<QuerySnapshot>(
+                      stream: waterStream,
+                      builder: (BuildContext context,
+                          AsyncSnapshot<QuerySnapshot> snapshot) {
+                        if (snapshot.hasError) {
+                          return Text('Error');
+                        }
+
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Text("");
+                        }
+                        final listData = snapshot.data?.docs
+                            .map(
+                              (e) => ChartDataEntity.fromJson(
+                                  e.data() as Map<String, dynamic>),
+                            )
+                            .toList();
+                        listData?.sort((a, b) => a.date.compareTo(b.date));
+                        return Text(
+                          "${listData?.last.value} (Ph)",
+                          style: GoogleFonts.montserrat(
+                              fontSize: 22, fontWeight: FontWeight.w700),
+                        );
+                      }),
                 ],
               ),
               Column(

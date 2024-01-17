@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:plant_client/domain/entities/chart_data_entity.dart';
 import 'package:plant_client/domain/repositories/home_repository.dart';
 import 'package:plant_client/presentation/manager/home/home_bloc.dart';
+import 'package:plant_client/presentation/pages/pages.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../core/helpers/constant_values.dart';
@@ -52,7 +53,12 @@ class _WaterChartTabPageState extends State<WaterChartTabPage> {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => const WaterChartHistoryPage()));
+                  },
                   child: Text(
                     "View All >",
                     style: GoogleFonts.montserrat(
@@ -92,7 +98,7 @@ class _WaterChartTabPageState extends State<WaterChartTabPage> {
                     interactiveTooltip: const InteractiveTooltip(
                       enable: true,
                     ),
-                    maximum: 75,
+                    maximum: 7,
                     minimum: 0,
                     edgeLabelPlacement: EdgeLabelPlacement.hide,
                     majorGridLines: const MajorGridLines(width: 0),

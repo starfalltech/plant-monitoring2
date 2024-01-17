@@ -15,14 +15,14 @@ class TempChartHistoryPage extends StatefulWidget {
 
 class _TempChartHistoryPageState extends State<TempChartHistoryPage> {
   final List<String> textList = [
-    "1M",
     "5M",
-    "20M",
-    "30M",
+    "10M",
     "1H",
-    "2H",
+    "3H",
+    "12H",
+    "1D",
   ];
-  ValueNotifier<int> indexSelected = ValueNotifier(0);
+  ValueNotifier<int> indexSelected = ValueNotifier(3);
   List<ChartDataEntity> datasource = [];
   ValueNotifier<List<ChartDataEntity>> datasourceCopy = ValueNotifier([]);
 
@@ -43,7 +43,10 @@ class _TempChartHistoryPageState extends State<TempChartHistoryPage> {
         child: BlocListener<ChartHistoryBloc, ChartHistoryState>(
           listener: (context, state) {
             if (state.status == ChartHistoryStatus.tempSuccess) {
-              datasourceCopy.value = state.data;
+              datasourceCopy.value = state.data
+                  .where((element) => element.date.isAfter(
+                      DateTime.now().subtract(const Duration(hours: 3))))
+                  .toList();
               datasource = state.data;
             }
           },
@@ -101,16 +104,47 @@ class _TempChartHistoryPageState extends State<TempChartHistoryPage> {
                           onTap: () {
                             indexSelected.value = index;
 
-                            datasourceCopy.value = datasource
-                                .where((element) => element.date.isAfter(
-                                    DateTime.now().subtract(
-                                        const Duration(minutes: 240))))
-                                .toList();
-                            print(datasource
-                                .where((element) => element.date.isAfter(
-                                    DateTime.now().subtract(
-                                        const Duration(minutes: 240))))
-                                .toList());
+                            if (indexSelected.value == 0) {
+                              datasourceCopy.value = datasource
+                                  .where((element) => element.date.isAfter(
+                                      DateTime.now().subtract(
+                                          const Duration(minutes: 5))))
+                                  .toList();
+                            } else if (indexSelected.value == 1) {
+                              datasourceCopy.value = datasource
+                                  .where((element) => element.date.isAfter(
+                                      DateTime.now().subtract(
+                                          const Duration(minutes: 10))))
+                                  .toList();
+                            } else if (indexSelected.value == 2) {
+                              datasourceCopy.value = datasource
+                                  .where((element) => element.date.isAfter(
+                                      DateTime.now()
+                                          .subtract(const Duration(hours: 1))))
+                                  .toList();
+                            } else if (indexSelected.value == 3) {
+                              datasourceCopy.value = datasource
+                                  .where((element) => element.date.isAfter(
+                                      DateTime.now()
+                                          .subtract(const Duration(hours: 3))))
+                                  .toList();
+                            } else if (indexSelected.value == 4) {
+                              datasourceCopy.value = datasource
+                                  .where((element) => element.date.isAfter(
+                                      DateTime.now()
+                                          .subtract(const Duration(hours: 12))))
+                                  .toList();
+                            } else if (indexSelected.value == 5) {
+                              datasourceCopy.value = datasource
+                                  .where((element) => element.date.isAfter(
+                                      DateTime.now()
+                                          .subtract(const Duration(days: 1))))
+                                  .toList();
+                            }
+                            int x = 0;
+                            datasourceCopy.value.forEach((element) {
+                              print("${element.toJson()} ${x++}");
+                            });
                           },
                           child: Container(
                             margin: const EdgeInsets.symmetric(horizontal: 10),
